@@ -1,31 +1,14 @@
-
 import React, { Component } from 'react'
 import ListContacts from './Components/ListContacts';
+import {CONTACTS} from './Components/contacts';
 class App extends Component {
-    contacts = [
-        {
-          id: 'ryan',
-          name: 'Ryan Florence',
-          email: 'ryan@reacttraining.com',
-        //   avatarURL: config.origin + '/ryan.jpg'
-        },
-        {
-          id: 'michael',
-          name: 'Michael Jackson',
-          email: 'michael@reacttraining.com',
-        //   avatarURL: config.origin + '/michael.jpg'
-        },
-        {
-          id: 'tyler',
-          name: 'Tyler McGinnis',
-          email: 'tyler@reacttraining.com',
-        //   avatarURL: config.origin + '/tyler.jpg'
-        }
-      ]
+    state = {
+        contacts:CONTACTS,
+    }
     render() {
         return (
             <>
-                {this.contacts.map(contact=><ListContacts key = {contact.id} contactItem={contact.name}/> )}
+                {this.state.contacts.map(contact=><ListContacts key = {contact.id} contactItem={contact.name}/> )}
             </>
         )
     }
