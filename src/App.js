@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react'
-import ListContact from './Components/ListContact';
+import ListContacts from './Components/ListContacts';
 class App extends Component {
     contacts = [
         {
@@ -25,7 +25,7 @@ class App extends Component {
     render() {
         return (
             <>
-                {this.contacts.map(contact=><ListContact key = {contact.id} contactItem={contact.name}></ListContact> )}
+                {this.contacts.map(contact=><ListContacts key = {contact.id} contactItem={contact.name}/> )}
             </>
         )
     }

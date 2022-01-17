@@ -1,6 +1,6 @@
 import React from "react";
 
-function ListContact(props) {
+function ListContacts(props) {
   return (
     <>
       <ul>
@@ -10,4 +10,4 @@ function ListContact(props) {
   );
 }
 
-export default ListContact;
+export default ListContacts;
