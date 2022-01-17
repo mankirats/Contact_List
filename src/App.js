@@ -1,14 +1,20 @@
 import React, { Component } from 'react'
-import ListContacts from './Components/ListContacts';
 import {CONTACTS} from './Components/contacts';
+import ListContacts from './Components/ListContacts';
+
 class App extends Component {
     state = {
         contacts:CONTACTS,
     }
+    removeContact(contact){
+        this.setState({
+            contacts: this.state.contacts.filter(c=>c.id!=contact.id)
+        })
+    }
     render() {
         return (
             <>
-                {this.state.contacts.map(contact=><ListContacts key = {contact.id} contactItem={contact.name}/> )}
+                <ListContacts contacts = {this.state.contacts} remove={this.removeContact}></ListContacts>
             </>
         )
     }

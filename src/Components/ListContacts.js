@@ -4,7 +4,12 @@ function ListContacts(props) {
   return (
     <>
       <ul>
-        <li>{props.contactItem}</li>
+        {props.contacts.map((contact) => (
+          <li key={contact.id}>
+            {contact.name}
+            <button onClick={() => props.remove(contact)}>REMove</button>
+          </li>
+        ))}
       </ul>
     </>
   );
