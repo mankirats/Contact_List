@@ -1,4 +1,5 @@
 import React from "react";
+import propTypes from "prop-types";
 
 function ListContacts(props) {
   return (
@@ -13,6 +14,11 @@ function ListContacts(props) {
       </ul>
     </>
   );
+}
+
+ListContacts.propTypes={
+  contacts: propTypes.array.isRequired,
+  remove:propTypes.func.isRequired
 }
 
 export default ListContacts;

@@ -6,10 +6,11 @@ class App extends Component {
     state = {
         contacts:CONTACTS,
     }
+    removeContact = this.removeContact.bind(this);
     removeContact(contact){
-        this.setState({
-            contacts: this.state.contacts.filter(c=>c.id!=contact.id)
-        })
+        this.setState((state)=>({
+            contacts: state.contacts.filter(c=>c.id!==contact.id)
+        }))
     }
     render() {
         return (
