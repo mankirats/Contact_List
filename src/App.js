@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {CONTACTS} from './Components/contacts';
 import ListContacts from './Components/ListContacts';
-
+import SearchContacts from './Components/SearchContacts';
 class App extends Component {
     state = {
         contacts:CONTACTS,
@@ -15,6 +15,7 @@ class App extends Component {
     render() {
         return (
             <>
+                <SearchContacts></SearchContacts>
                 <ListContacts contacts = {this.state.contacts} remove={this.removeContact}></ListContacts>
             </>
         )
