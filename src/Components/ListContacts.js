@@ -16,9 +16,9 @@ function ListContacts(props) {
   );
 }
 
-ListContacts.propTypes={
+ListContacts.propTypes = {
   contacts: propTypes.array.isRequired,
-  remove:propTypes.func.isRequired
-}
+  remove: propTypes.func.isRequired,
+};
 
 export default ListContacts;
