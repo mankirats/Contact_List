@@ -7,15 +7,18 @@ function SearchContacts(props) {
     setSearchResult((searchResult = event.target.value));
     searchedContacts();
   };
+
   const searchedContacts = () => {
     let re = new RegExp(searchResult, "gi");
-    let result = props.contacts
-      .map((c) => re.exec(c.name))
-      .filter((result) => result != null && result["input"] != null)
-      .map((r) => r["input"]);
+    let result = props.contacts.filter((c) => re.test(c.name));
+    // .map((c) => re.exec(c.name))
+    // .filter((result) => result != null && result["input"] != null)
+    // .map((r) => r["input"]);
     console.log(result);
+    props.ResultDisplay = result;
     return result;
   };
+
   return (
     <>
       <input type="text" value={searchResult} onChange={handleSearch} />
