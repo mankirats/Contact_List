@@ -11,18 +11,12 @@ class App extends Component {
       contacts: state.contacts.filter((c) => c.id !== contact.id),
     }));
   };
-  contactResults = (results) => {
-    this.setState((state) => ({
-      contacts: state.contacts.filter((c) => c.id == results.id),
-    }));
-    console.log(results);
-  };
   render() {
     return (
       <>
         <SearchContacts
           contacts={this.state.contacts}
-          ResultDisplay={this.contactResults}
+          ResultDisplay={this.searchedContacts}
         ></SearchContacts>
         <ListContacts
           contacts={this.state.contacts}
