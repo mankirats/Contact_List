@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import propTypes from "prop-types";
 
+import escapeStringRegexp from "escape-string-regexp";
+
 function ListContacts(props) {
+  // const [contactSearch, setContactSearch] = useState(props.contacts);
+  // const propTriggerResult = (searchResult) => {
+  //   let match = new RegExp(escapeStringRegexp(searchResult, "i"));
+  //   setContactSearch({
+  //     contactSearch: props.contacts.filter((c) => match.test(c.name)),
+  //   });
+  // };
   return (
     <>
       <ul>
