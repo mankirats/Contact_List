@@ -4,11 +4,22 @@ import SearchContacts from "./SearchContacts";
 import escapeStringRegexp from "escape-string-regexp";
 
 function ListContacts(props) {
+  let [contactSearchResults, setContactSearchResults] = useState([]);
+  const contactResults = (searchKey) => {
+    const match = new RegExp(escapeStringRegexp(searchKey), "i");
+    setContactSearchResults(
+      (contactSearchResults = props.contacts.filter((c) => match.test(c.name)))
+    );
+    console.log(contactSearchResults);
+  };
+
   return (
     <>
-      <SearchContacts></SearchContacts>
+      <SearchContacts
+        triggerSearch={(val) => contactResults(val)}
+      ></SearchContacts>
       <ul>
-        {props.contacts.map((contact) => (
+        {contactSearchResults.map((contact) => (
           <li key={contact.id}>
             {contact.name}
             <button onClick={() => props.remove(contact)}>REMove</button>
