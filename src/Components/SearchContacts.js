@@ -4,7 +4,7 @@ function SearchContacts(props) {
   let [searchInput, setSearchInput] = useState("");
   const handleInputChange = (event) => {
     setSearchInput((searchInput = event.target.value));
-    props.triggerSearch(searchInput);
+    props.liftingSearchInput(searchInput);
   };
 
   return (
