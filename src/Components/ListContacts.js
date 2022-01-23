@@ -5,6 +5,7 @@ import escapeStringRegexp from "escape-string-regexp";
 
 function ListContacts(props) {
   let [contactSearchResults, setContactSearchResults] = useState([]);
+
   const contactResults = (searchKey) => {
     const match = new RegExp(escapeStringRegexp(searchKey), "i");
     setContactSearchResults(
@@ -13,13 +14,16 @@ function ListContacts(props) {
     console.log(contactSearchResults);
   };
 
+  let results =
+    contactSearchResults.length == 0 ? props.contacts : contactSearchResults;
+
   return (
     <>
       <SearchContacts
         triggerSearch={(val) => contactResults(val)}
       ></SearchContacts>
       <ul>
-        {contactSearchResults.map((contact) => (
+        {results.map((contact) => (
           <li key={contact.id}>
             {contact.name}
             <button onClick={() => props.remove(contact)}>REMove</button>
