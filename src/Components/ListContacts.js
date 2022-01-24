@@ -19,7 +19,11 @@ const ContactList = styled.ul`
   padding: 0;
 `;
 
-const ShowAllButton = styled.a``;
+const ShowAllButton = styled.a`
+  color: #304ffe;
+  font-weight: 500;
+  cursor: pointer;
+`;
 
 const ContactItems = styled.li`
   background-color: #f7f7f8;
@@ -29,7 +33,7 @@ const ContactItems = styled.li`
   list-style-type: none;
   width: 100%;
   letter-spacing: 0.5px;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 2.5rem;
   margin-top: 5px;
   font-size: 1.05rem;
 `;
@@ -57,6 +61,12 @@ const ContactCounts = styled.div`
   text-align: center;
   font-weight: 500;
 `;
+const Avatar = styled.img`
+  position: absolute;
+  top: 3px;
+  left: 4px;
+  height: 1.9rem;
+`;
 
 function ListContacts(props) {
   let [contactSearch, setContactSearch] = useState("");
@@ -83,19 +93,21 @@ function ListContacts(props) {
       <SearchContacts
         liftingSearchInput={(val) => handlingSearch(val)}
       ></SearchContacts>
-      <ContactCounts>
-        Now showing {showingContacts.length} of {props.contacts.length} Contacts{" "}
-        {showingContacts.length < props.contacts.length ? (
+      {showingContacts.length < props.contacts.length ? (
+        <ContactCounts>
+          Now showing {showingContacts.length} of {props.contacts.length}{" "}
+          Contacts{" "}
           <ShowAllButton onClick={() => showAllContacts()}>
             Show All
           </ShowAllButton>
-        ) : (
-          <></>
-        )}
-      </ContactCounts>
+        </ContactCounts>
+      ) : (
+        <></>
+      )}
       <ContactList>
         {showingContacts.map((contact) => (
           <ContactItems key={contact.id}>
+            <Avatar src={contact.avatar} alt="avatar" />
             {contact.name}
             <RemoveContactButton onClick={() => props.remove(contact)}>
               REMOVE
