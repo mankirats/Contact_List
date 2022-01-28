@@ -1,32 +1,17 @@
-const { createReadStream } = require("fs");
+const http = require("http");
 
-const stream = createReadStream("public/sample-text-file.txt", {
-  highWaterMark: 30000,
-  encoding: "utf-8",
+const server = http.createServer((req, res) => {
+  if (req.url == "/") {
+    res.writeHead(200, { "Content-Type": "text/plain" });
+    res.write("Hello ");
+    res.end();
+  } else {
+    res.writeHead(404, { "Content-Type": "text/plain" });
+    res.write("I think you are lost");
+    res.end();
+  }
 });
 
-stream.on("data", (result) => {
-  console.log(result);
+server.listen(5001, () => {
+  console.log("sever running at port 5001");
 });
-// import * as http from "http";
-// import _ from "lodash";
-
-// let nestedArr = [1, 23, [3, [34]]];
-
-// // let flatArr = ;
-
-// // console.log(_.flattenDeep([1, [2, [3, 4, [5]]]]));
-
-// let flattenArray = _.flatten([1, [2, 3, [4]]], true);
-
-// console.log(_.flattenDeep([1, [2, 3, [4]]], true));
-
-// const server = http.createServer();
-
-// server.on("request", (req, res) => {
-//   console.log(req.url);
-//   res.write("Welcome to My Node Server Page");
-//   res.end();
-// });
-
-// server.listen(5001);
