@@ -1,17 +1,19 @@
-const http = require("http");
+const express = require("express");
+const app = express();
+const port = 5001;
 
-const server = http.createServer((req, res) => {
-  if (req.url == "/") {
-    res.writeHead(200, { "Content-Type": "text/plain" });
-    res.write("Hello ");
-    res.end();
-  } else {
-    res.writeHead(404, { "Content-Type": "text/plain" });
-    res.write("I think you are lost");
-    res.end();
-  }
+app.get("/", (req, res) => {
+  res.send("Home page");
 });
 
-server.listen(5001, () => {
-  console.log("sever running at port 5001");
+app.get("/addContact", (req, res) => {
+  res.send("create contact");
+});
+
+app.get("/removeContact", (req, res) => {
+  res.send("removing contact");
+});
+
+app.listen(port, () => {
+  console.log(`Server listening at port ${port}`);
 });
