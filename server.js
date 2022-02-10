@@ -14,6 +14,18 @@ app.get("/removeContact", (req, res) => {
   res.send("removing contact");
 });
 
-app.listen(port, () => {
-  console.log(`Server listening at port ${port}`);
+app.all("*", (req, res) => {
+  res.status(404).send("Oops you are lost!");
 });
+
+app.listen(port, () => {
+  console.log(`Server listening on port ${port}`);
+});
+
+// app.get
+// app.post
+// app.put
+// app.delete
+// app.all
+// app.use
+// app.listen
